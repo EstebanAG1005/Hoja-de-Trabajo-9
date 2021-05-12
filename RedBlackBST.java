@@ -501,11 +501,6 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements Map<Key,
         else              return size(x.left); 
     }
 
-    @Override
-    public boolean containsKey(Key key) {
-        // TODO Auto-generated method stub
-        return false;
-    }
 
     @Override
     public void replace(Key key, Value oldValue, Value newValue) {

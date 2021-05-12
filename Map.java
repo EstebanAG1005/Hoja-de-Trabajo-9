@@ -19,7 +19,7 @@ public interface Map<K, V> {
      * @param key la llave que se quiere averiguar
      * @return true si existe la llave y false si no existe
      */
-    public boolean containsKey(K key);
+    public boolean contains(K key);
 
     /**
      * Actualiza los daos de una entrada
