@@ -1,7 +1,4 @@
-/**
- * Referencia de Codigo:
- * https://algs4.cs.princeton.edu/33balanced/RedBlackBST.java.html
- */
+
 import java.util.NoSuchElementException;
 
 public class RedBlackBST<Key extends Comparable<Key>, Value> implements Map<Key, Value>  {
@@ -499,14 +496,87 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements Map<Key,
         if      (cmp < 0) return rank(key, x.left); 
         else if (cmp > 0) return 1 + size(x.left) + rank(key, x.right); 
         else              return size(x.left); 
+    } 
+
+   /***************************************************************************
+    *  Range count and range search.
+    ***************************************************************************/
+
+
+    /**
+     * Returns the number of keys in the symbol table in the given range.
+     *
+     * @param  lo minimum endpoint
+     * @param  hi maximum endpoint
+     * @return the number of keys in the symbol table between {@code lo} 
+     *    (inclusive) and {@code hi} (inclusive)
+     * @throws IllegalArgumentException if either {@code lo} or {@code hi}
+     *    is {@code null}
+     */
+    public int size(Key lo, Key hi) {
+        if (lo == null) throw new IllegalArgumentException("first argument to size() is null");
+        if (hi == null) throw new IllegalArgumentException("second argument to size() is null");
+
+        if (lo.compareTo(hi) > 0) return 0;
+        if (contains(hi)) return rank(hi) - rank(lo) + 1;
+        else              return rank(hi) - rank(lo);
     }
 
 
-    @Override
-    public void replace(Key key, Value oldValue, Value newValue) {
-        // TODO Auto-generated method stub
-        
-    } 
-}
+   /***************************************************************************
+    *  Check integrity of red-black tree data structure.
+    ***************************************************************************/
 
-  
+    // does this binary tree satisfy symmetric order?
+    // Note: this test also ensures that data structure is a binary tree since order is strict
+    private boolean isBST() {
+        return isBST(root, null, null);
+    }
+
+    // is the tree rooted at x a BST with all keys strictly between min and max
+    // (if min or max is null, treat as empty constraint)
+    // Credit: Bob Dondero's elegant solution
+    private boolean isBST(Node x, Key min, Key max) {
+        if (x == null) return true;
+        if (min != null && x.key.compareTo(min) <= 0) return false;
+        if (max != null && x.key.compareTo(max) >= 0) return false;
+        return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
+    } 
+
+    // are the size fields correct?
+    private boolean isSizeConsistent() { return isSizeConsistent(root); }
+    private boolean isSizeConsistent(Node x) {
+        if (x == null) return true;
+        if (x.size != size(x.left) + size(x.right) + 1) return false;
+        return isSizeConsistent(x.left) && isSizeConsistent(x.right);
+    } 
+
+    // Does the tree have no red right links, and at most one (left)
+    // red links in a row on any path?
+    private boolean is23() { return is23(root); }
+    private boolean is23(Node x) {
+        if (x == null) return true;
+        if (isRed(x.right)) return false;
+        if (x != root && isRed(x) && isRed(x.left))
+            return false;
+        return is23(x.left) && is23(x.right);
+    } 
+
+    // do all paths from root to leaf have same number of black edges?
+    private boolean isBalanced() { 
+        int black = 0;     // number of black links on path from root to min
+        Node x = root;
+        while (x != null) {
+            if (!isRed(x)) black++;
+            x = x.left;
+        }
+        return isBalanced(root, black);
+    }
+
+    // does every path from the root to a leaf have the given number of black links?
+    private boolean isBalanced(Node x, int black) {
+        if (x == null) return black == 0;
+        if (!isRed(x)) black--;
+        return isBalanced(x.left, black) && isBalanced(x.right, black);
+    }
+}

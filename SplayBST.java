@@ -197,10 +197,4 @@ public class SplayBST<Key extends Comparable<Key>, Value> implements Map<Key, Va
         x.left = h;
         return x;
     }
-
-    @Override
-    public void replace(Key key, Value oldValue, Value newValue) {
-        // TODO Auto-generated method stub
-        
-    }
 }

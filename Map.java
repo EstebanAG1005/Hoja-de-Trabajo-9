@@ -21,17 +21,4 @@ public interface Map<K, V> {
      */
     public boolean contains(K key);
 
-    /**
-     * Actualiza los daos de una entrada
-     * @param key es la llave en donde se quiere actualizar el valro
-     * @param oldValue valor anterior
-     * @param newValue nuevo anterior
-     */
-    public void replace(K key, V oldValue, V newValue);
-
-    /**
-     * Consiguie el tamaño de la coleccion
-     * @return el tamaño de la colección
-     */
-    public int size();
 }
