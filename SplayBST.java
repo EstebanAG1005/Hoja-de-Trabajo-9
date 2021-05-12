@@ -3,7 +3,7 @@
  * https://algs4.cs.princeton.edu/33balanced/SplayBST.java.html
  */
 
-public class SplayBST<Key extends Comparable<Key>, Value>  {
+public class SplayBST<Key extends Comparable<Key>, Value> implements Map<Key, Value>{
 
     private Node root;   // root of the BST
 
@@ -196,5 +196,17 @@ public class SplayBST<Key extends Comparable<Key>, Value>  {
         h.right = x.left;
         x.left = h;
         return x;
+    }
+
+    @Override
+    public boolean containsKey(Key key) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void replace(Key key, Value oldValue, Value newValue) {
+        // TODO Auto-generated method stub
+        
     }
 }

@@ -4,7 +4,7 @@
  */
 import java.util.NoSuchElementException;
 
-public class RedBlackBST<Key extends Comparable<Key>, Value> {
+public class RedBlackBST<Key extends Comparable<Key>, Value> implements Map<Key, Value>  {
 
     private static final boolean RED   = true;
     private static final boolean BLACK = false;
@@ -499,6 +499,18 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         if      (cmp < 0) return rank(key, x.left); 
         else if (cmp > 0) return 1 + size(x.left) + rank(key, x.right); 
         else              return size(x.left); 
+    }
+
+    @Override
+    public boolean containsKey(Key key) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void replace(Key key, Value oldValue, Value newValue) {
+        // TODO Auto-generated method stub
+        
     } 
 }
 
