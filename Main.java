@@ -41,6 +41,7 @@ public class Main{
             BufferedReader breader = new BufferedReader(reader);
             String linea2 = "";
 
+            // Seprar las palabras por chars
             while((linea = breader.readLine()) != null) {
 
                 if(linea.charAt(0) == '#'){

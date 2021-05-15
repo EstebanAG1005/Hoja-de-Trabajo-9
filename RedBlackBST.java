@@ -1,6 +1,10 @@
 
 import java.util.NoSuchElementException;
 
+/*
+Referencias: https://algs4.cs.princeton.edu/33balanced/RedBlackBST.java.html
+ */
+
 public class RedBlackBST<Key extends Comparable<Key>, Value> implements Map<Key, Value>  {
 
     private static final boolean RED   = true;
