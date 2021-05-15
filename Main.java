@@ -12,7 +12,10 @@ public class Main{
         String linea = "";
         String str= "                      "; 
         int num = 1;
-        System.out.println("Seleccione la opcion de arbol a utilizar");
+
+
+        System.out.println("---------------HDT#9-----------------");
+        System.out.println("Seleccione la implementacion deseada: ");
         System.out.println("1. RedBlack Tree");
         System.out.println("2. SplayTree");
         Scanner scan = new Scanner(System.in);
@@ -27,7 +30,6 @@ public class Main{
 
 
         /*Se lee el Archivo Spanish.txt*/
-        //SE LEE EL ARCHIVO
         try{
             File file = new File("Spanish.txt");
 
@@ -75,15 +77,14 @@ public class Main{
             e.printStackTrace();
         }
 
-    /*Se lee el Archivo txt */
-        //SE LEE ARCHIVO A TRADUCIR
+        /*Se lee el Archivo txt */
         try {
             FileReader lect = new FileReader("texto.txt");
             BufferedReader bf = new BufferedReader(lect);
             String wTrad;
             while ((linea = bf.readLine()) != null){
 
-            //split de cada linea
+                //split de cada linea
                 linea = linea.toLowerCase();
                 String [] texto =linea.split(" ");
                 wTrad = " ";
