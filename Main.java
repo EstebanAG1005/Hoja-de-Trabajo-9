@@ -12,7 +12,9 @@ public class Main{
         String linea = "";
         String str= "                      "; 
         int num = 1;
-        System.out.print("Seleccione la opcion de arbol a utilizar\n1. RedBlack Tree\n2.Splay Tree\n");
+        System.out.println("Seleccione la opcion de arbol a utilizar");
+        System.out.println("1. RedBlack Tree");
+        System.out.println("2. SplayTree");
         Scanner scan = new Scanner(System.in);
         int eleccion;
         try{
@@ -56,20 +58,6 @@ public class Main{
                         linea2 = " ";
                         temp[1] = linea2;
                     }
-
-
-                   /* String[] separar = linea.split("\\s+");
-                    if(separar.length > 2){
-                        linea2 = separar[1] + " " + separar[2];
-                        separar[1] = linea2;
-                    }else if(separar.length == 2){
-                        linea2 = separar[1];
-                        separar[1] = linea2;
-                    }else if(separar.length < 1){
-                        linea2 = " ";
-                        separar[1] = linea2;
-                    }
-                    */
                     if(temp.length > 1){
                         arbol.put(temp[0], temp[1]);
                     }
