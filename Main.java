@@ -102,7 +102,8 @@ public class Main{
                     wTrad += " ";
                 }
                 //se imprime oracion traducida
-                System.out.print("\n"+wTrad);
+                System.out.println("Texto Traducido: ");
+                System.out.print(wTrad);
             }
             bf.close();
         }catch (IOException ex){
